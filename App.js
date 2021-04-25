@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { NavBar } from './src/NavBar';
+import { AddInput } from './src/AddNum.js';
+ 
 export default function App() {
+  
+  const [result, setResult] = useState(null);
+ 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+        <NavBar title="Конвертер валют" />
+        <Text style={styles.str} > Перевод рублей в доллары </Text>
+        <AddInput 
+              setResult={setResult.bind(this)}
+         />
+        <View>
+              {result} 
+        </View>
     </View>
   );
 }
-
+ 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+  },
+  str: {
+    display: 'flex',
+    color: 'red',
+    fontSize: 15,
   },
 });
